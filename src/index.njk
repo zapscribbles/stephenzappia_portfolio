@@ -16,6 +16,13 @@ projects:
         wip: true
         brief: Chic, muted colour scheme, smooth and simple
         stack: Eleventy, Nunjucks, Tailwind, AlpineJS, Custom CMS
+    -   title: MM Weekend
+        image: assets/preview-mmweekend.png
+        desc: An event site for a murder mystery weekend
+        url: http://mmweekend.stephenzappia.com/
+        wip: false
+        brief: Bright, informative, purple
+        stack: Eleventy, Nunjucks, Tailwind, AlpineJS, Supabase
 ---
 <div x-data="{ pageLoaded: false }"
     x-init="$nextTick(() => { pageLoaded = true })"
@@ -80,7 +87,7 @@ projects:
                                 {{project.stack}}</div>
                         </div>
                         <img src="{{ project.image }}"
-                            class=' transform transition duration-300 rounded-xl w-{{imgSize}} h-{{imgSize}} object-cover border-4 border-transparent'
+                            class='transform transition duration-300 rounded-md lg:rounded-xl w-{{imgSize}} h-{{imgSize}} object-cover object-top border-4 border-transparent'
                             :class="{
                                 'translate-y-0': !onMobile && !hovering,
                                 'translate-y-{{descHeight}} border-darkBlue shadow': !onMobile && hovering,
