@@ -13,7 +13,7 @@ html {
 }
 
 a {
-    @apply text-mediumBlue;
+    @apply text-mediumBlue underline;
 }
 
 body {
