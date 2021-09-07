@@ -1,55 +1,112 @@
 ---
 layout: body
 js: index.js
-contacts:
-    -   url: mailto:stephen.zappia@gmail.com
-        icon: fas fa-envelope
-    -   url: https://www.linkedin.com/in/stephen-zappia/
-        icon: fab fa-linkedin
+projects:
+    -   title: Giulia Panuccio Design
+        image: assets/preview-giuliapanucciodesign.png
+        desc: A graphic designer's live portfolio
+        url: http://gpdesign.stephenzappia.com
+        wip: true
+        brief: Minimalist, very little colour, let the work speak for itself
+        stack: Eleventy, Nunjucks, Tailwind, AlpineJS, Netlify CMS
+    -   title: Sydney Design Pod
+        image: assets/preview-sydneydesignpod.png
+        desc: An interior decorator's digital home
+        url: http://sydney-design-pod.stephenzappia.com
+        wip: true
+        brief: Chic, muted colour scheme, smooth and simple
+        stack: Eleventy, Nunjucks, Tailwind, AlpineJS, Custom CMS
 ---
 <div x-data="{ pageLoaded: false }"
     x-init="$nextTick(() => { pageLoaded = true })"
-    class="mt-20 lg:mt-60 h-full w-full flex flex-col items-center justify-center"
+    class="mt-10 lg:mt-40 mx-4 lg:mx-20 flex flex-col items-center justify-center"
     >
     {# Intro #}
-
     <h1 class="text-center"
-        {% set delayCounter = 1 %}{% include "partials/delayed-fade-in.njk" %}
-        >Hey, I'm Stephen.</h1>
+    {% set delayCounter = 1 %}{% include "partials/delayed-fade-in.njk" %}
+        >Hi, I'm Stephen.</h1>
 
-    <h2 class="text-center"
-        {% set delayCounter = delayCounter + 3 %}{% include "partials/delayed-fade-in.njk" %}
-        >Nice to meet you.</h2>
+    <div class='text-center lg:w-1/2 my-5 lg:my-10' {% set delayCounter = delayCounter + 2 %}{% include "partials/delayed-fade-in.njk" %}>
+        <div class='my-5'>I'm a solutions architect, project manager, web developer and customer service professional. Yup, all of 'em!</div>
+        <div class='my-5'>I'm passionate about supporting people and businesses by designing and building creative, human-centric solutions to technical problems.</div>
+        <div class='my-5'>I believe in using my skillset to make people's lives better, whether it be building something to help them succeed or sharing my skills in a mentoring capacity.</div>
+    </div>
+
+    <h2 class="flex gap-5 text-center"
+    {% set delayCounter = delayCounter + 2 %}{% include "partials/delayed-fade-in.njk" %}
+        >
+        <div class="mb-5">Nice to meet you.</div>
+        {# <div class="">How can I help?</div> #}
+    </h2>
+
+    <div class="h-20 lg:h-48 flex justify-center items-center"
+        {% set delayCounter = delayCounter + 2 %}{% include "partials/delayed-fade-in.njk" %}
+        >
+        <div class='rounded bg-regularBlue w-28 h-1'></div>
+    </div>
 
     {# Projects #}
+    <div class='self-start w-full' {% set delayCounter = delayCounter + 3 %}{% include "partials/delayed-fade-in.njk" %}>
+        <h3 class='text-center mb-14'>Check out these sites I built with
+            <div class="flex gap-2 justify-center items-center mt-3">
+                <i class="fas fa-heart text-regularBlue"></i>
+                <i class="far fa-plus text-sm lg:text-2xl"></i>
+                <i class="far fa-code text-regularBlue"></i>
+            </div>
+        </h3>
+        <div class='flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-20 my-10 w-full'>
+            {% set descHeight = 44 %}
+            {% set imgSize = 72 %}
+            {% for project in projects %}
+                <div class='mb-10 lg:mb-0 w-{{imgSize}}' {% set delayCounter = delayCounter + 1 %}{% include "partials/delayed-fade-in.njk" %}>
+                    <div class='text-xl text-center mb-1 lg:mb-4 font-extrabold'>
+                        <a href="{{project.url}}" target="_blank">{{ project.title }}</a>
+                        {% if project.wip %}
+                            <span class="m-auto rounded bg-light text-greyBlue px-2 py-1 font-heading">WIP</span>
+                        {% endif %}
+                    </div>
+                    <div x-data="{ hovering: false, swiped: false, onMobile: window.innerWidth <= 640 }" class='text-darkBlue'
+                        @pointerover="onMobile === false ? hovering = true : null" @pointerout="onMobile === false ? hovering = false : null"
+                        {# Decided against swipe events on mobile, but leaving the code here in case I change my mind again #}
+                        {# @swiped-left="onMobile === true ? swiped = true : null" @swiped-right="onMobile === true ? swiped = false : null" #}
+                    >
+                        <div class='lg:absolute lg:w-{{imgSize}} h-{{descHeight}} leading-1 px-2 flex flex-col gap-2 items-center justify-center'>
+                            <div class="text-center italic">{{ project.desc }}</div>
+                            <div class=''>
+                                <span class="underline">Brief:</span>
+                                {{project.brief}}</div>
+                            <div class=''>
+                                <span class="underline">Tech stack:</span>
+                                {{project.stack}}</div>
+                        </div>
+                        <img src="{{ project.image }}"
+                            class=' transform transition duration-300 rounded-xl w-{{imgSize}} h-{{imgSize}} object-cover border-4 border-transparent'
+                            :class="{
+                                'translate-y-0': !onMobile && !hovering,
+                                'translate-y-{{descHeight}} border-darkBlue shadow': !onMobile && hovering,
+                                {# '-translate-y-{{descHeight}}': onMobile,
+                                'translate-x-0': onMobile && !swiped,
+                                '-translate-x-{{imgSize}}': onMobile && swiped, #}
+                                }"/>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="h-20 lg:h-48 flex justify-center items-center"
+        {% set delayCounter = delayCounter + 2 %}{% include "partials/delayed-fade-in.njk" %}
+        >
+        <div class='rounded bg-regularBlue w-28 h-1'></div>
+    </div>
 
     {# Contact #}
-    <div class="lg:mt-40 mt-20 text-center"
+    <div class="text-center"
         {% set delayCounter = delayCounter + 8 %}{% include "partials/delayed-fade-in.njk" %}
         >
         <h5>Shall we?</h5>
-        <div class="mt-4 flex items-center justify-around">
-            {% for contact in contacts %}
-                <a href="{{ contact.url }}" target="_blank" x-data="{ hover: false }" @mouseover="hover = !hover" @mouseout="hover = !hover" >
-                    <i class="{{ contact.icon }} text-3xl transition-all" :class="{ 'text-regularBlue': hover }"></i>
-                </a>
-            {% endfor %}
-        </div>
+        {% include "partials/contact-links.njk" %}
     </div>
 </div>
 
 <div class="h-80"></div>
-
-{# Modals #}
-{# <div x-data>
-    {% set modalID = "faq" %}
-    {% include "partials/modal.njk" %}
-    {% set modalID = "help" %}
-    {% include "partials/modal.njk" %}
-</div> #}
-
-{# <div x-data="componentData" class="text-center m-20">
-    <span x-text="message"></span>
-    {% set tooltipText = "This is a tooltip" %}
-    {% include "partials/tooltip.njk" %}
-</div> #}
