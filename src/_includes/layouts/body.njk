@@ -2,10 +2,33 @@
 layout: header
 ---
 
-<main class="">
+<main class="mt-10 lg:mt-40 mx-4 lg:mx-20"
+    x-data="{ pageLoaded: false }"
+    x-init="$nextTick(() => { pageLoaded = true })" x-cloak>
     {% block content %}
         {{ content | safe }}
     {% endblock %}
+
+    <div class="h-20 lg:h-48 flex justify-center items-center"
+        {% set delayCounter = 3 %}{% include "partials/delayed-fade-in.njk" %}
+        >
+        <div class='rounded bg-regularBlue w-28 h-1'></div>
+    </div>
+
+    {# Contact #}
+    <div class="text-center"
+        {% set delayCounter = delayCounter + 2 %}{% include "partials/delayed-fade-in.njk" %}
+        >
+        <a class="mb-5 block m-auto" style="width: fit-content;" href="/enquire" x-data="{ hover: false }" @mouseover="hover = !hover" @mouseout="hover = !hover">
+            <h5 class="transition-all" :class="{ 'text-regularBlue': hover }">Shall we?</h5>
+        </a>
+        <div class="mt-4 flex items-center justify-center gap-5">
+            {% include "partials/contact-links.njk" %}
+        </div>
+    </div>
+
+    <div class="h-80"></div>
+
     <div class="text-sm text-center text-light mb-10 w-full">
         <div>Build Version: {% version %}</div>
         <div>Build Time: {% versionDate %}</div>

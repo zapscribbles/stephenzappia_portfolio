@@ -80,3 +80,23 @@ nav.btn.active {
 .faq-question {
     @apply font-bold mt-4;
 }
+
+button {
+    @apply bg-light border border-regularBlue px-4 py-2 rounded-xl;
+}
+
+input[type='text'],
+textarea {
+    @apply rounded;
+}
+
+.formlabel-subtitle {
+    @apply text-xs text-gray-700;
+}
+
+input::placeholder,
+input::-webkit-input-placeholder,
+textarea::placeholder,
+textarea::-webkit-input-placeholder {
+    @apply text-gray-300;
+}

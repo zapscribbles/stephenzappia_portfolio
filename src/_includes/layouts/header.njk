@@ -9,11 +9,16 @@ contacts:
         icon: fab fa-linkedin
 ---
 <div class="m-auto mt-10 lg:mt-0 lg:absolute lg:left-10 lg:top-10 w-14 h-14">
-    <img src="/assets/logo.png"/>
+    <a href="/"><img src="/assets/logo.png"/></a>
 </div>
 
 <div class="m-auto mt-10 lg:mt-0 lg:absolute lg:right-14 lg:top-10">
-    {% include "partials/contact-links.njk" %}
+    <div class="mt-4 flex items-center justify-center gap-5">
+        {% include "partials/contact-links.njk" %}
+        <a href="/enquire" x-data="{ hover: false }" @mouseover="hover = !hover" @mouseout="hover = !hover" class="mb-2">
+            <span class="text-xl transition-all" :class="{ 'text-regularBlue': hover }">Shall we?</span>
+        </a>
+    </div>
 </div>
 
 {# <nav class="bg-myGreen" x-data="{ isOpen: false }">

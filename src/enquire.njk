@@ -1,0 +1,61 @@
+---
+layout: body
+eleventyNavigation:
+    key: Enquire Now
+---
+
+<div class="text-center">
+    <h1 class="my-10" {% set delayCounter = 1 %}{% include "partials/delayed-fade-in.njk" %}>
+        Need a website?
+    </h1>
+    <h3 class="my-10" {% set delayCounter = delayCounter + 2 %}{% include "partials/delayed-fade-in.njk" %}>
+        I can help with that!
+    </h3>
+    <p class="mt-10" {% set delayCounter = delayCounter + 2 %}{% include "partials/delayed-fade-in.njk" %}>
+        Fill in this form to give me an idea of what you're looking for and I'll be in touch ASAP.<br/>
+        The more detail you can give me the better, but don't worry if you haven't got answers to all of these yet, we can figure them out together!
+    </p>
+    <form class="my-10 mx-auto max-w-3xl text-left flex flex-col gap-2" name="enquiry" netlify {% set delayCounter = delayCounter + 2 %}{% include "partials/delayed-fade-in.njk" %}>
+        <div class="grid grid-cols-2 gap-4 items-start">
+            <div class="text-right pr-5 self-center">Name</div>
+            <input type="text" name="name" placeholder="Jessie Bloggs"/>
+
+            <div class="text-right pr-5 self-center">Email</div>
+            <input type="text" name="email" placeholder="jessie@gmail.com"/>
+
+            <div class="text-right pr-5 self-center">Company Name</div>
+            <input type="text" name="companyName" placeholder="Bloggs Blogs Inc."/>
+
+            <div class="text-right pr-5">
+                <div>Current site</div>
+                <div class='formlabel-subtitle'>(if you have one)</div>
+            </div>
+            <input type="text" name="currentSite" placeholder="http://www.yourcurrentsite.com"/>
+
+            <div class="text-right pr-5">
+                <div>Site's purpose</div>
+                <div class='formlabel-subtitle'>What are you trying to achieve with the site? <br/>e.g. Sell my services, Provide information to my customers</div>
+            </div>
+            <textarea name="purpose" rows="2"></textarea>
+
+            <div class="text-right pr-5">
+                <div class=''>Style/Aesthetic</div>
+                <div class='formlabel-subtitle'>Any particular style or aesthetic you're going for? <br/>e.g. smooth, cool, bright, minmalist, exciting</div>
+            </div>
+            <textarea name="aesthetic" rows="2"></textarea>
+
+            <div class="text-right pr-5">
+                <div class=''>Inspiration</div>
+                <div class='formlabel-subtitle'>Are there any websites, publications or any other media that your site should be inspired by or modelled on?</div>
+            </div>
+            <textarea name="inspiration" rows="4"></textarea>
+
+            <div class="text-right pr-5">
+                <div class=''>Existing assets?</div>
+                <div class='formlabel-subtitle'>Do you have any existing branding assets, logos, colour schemes etc. you want to utilise? Do you already have wireframes?</div>
+            </div>
+            <input type="text" name="existingAssets"/>
+        </div>
+        <button class="m-auto mt-5" type="submit">Submit</button>
+    </form>
+</div>
