@@ -19,9 +19,10 @@ layout: header
     <div class="text-center"
         {% set delayCounter = delayCounter + 2 %}{% include "partials/delayed-fade-in.njk" %}
         >
-        <a class="mb-5 block m-auto" style="width: fit-content;" href="/enquire" x-data="{ hover: false }" @mouseover="hover = !hover" @mouseout="hover = !hover">
+        {# <a class="mb-5 block m-auto" style="width: fit-content;" href="/enquire" x-data="{ hover: false }" @mouseover="hover = !hover" @mouseout="hover = !hover">
             <h5 class="transition-all" :class="{ 'text-regularBlue': hover }">Shall we?</h5>
-        </a>
+        </a> #}
+        <h5 class="mb-5">Shall we?</h5>
         <div class="mt-4 flex items-center justify-center gap-5">
             {% include "partials/contact-links.njk" %}
         </div>
