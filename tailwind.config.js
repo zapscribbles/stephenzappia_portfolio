@@ -9,7 +9,7 @@ module.exports = {
         extend: {
             colors: {
                 // https://coolors.co/a9cdef-061a40-0353a4-006daa-003559
-                lightest: '#B9D6F2',
+                lightest: '#DCEBF9',
                 light: '#A9CDEF',
                 darkBlue: '#061A40',
                 mediumBlue: '#0353A4',

@@ -2,6 +2,13 @@
 layout: body
 js: index.js
 projects:
+    -   title: Evently
+        image: assets/preview-evently.png
+        desc: Digital home & docs for Evently
+        url: http://evently.cloud
+        wip: false
+        brief: Attractive, informative, set apart from the crowd
+        stack: Eleventy, Nunjucks, Markdown, Tailwind, AlpineJS, ParticlesJS
     -   title: Giulia Panuccio Design
         image: assets/preview-giuliapanucciodesign.png
         desc: A graphic designer's live portfolio
@@ -33,7 +40,7 @@ projects:
         >Hi, I'm Stephen.</h1>
 
     <div class='text-center lg:w-1/2 my-5 lg:my-10' {% set delayCounter = delayCounter + 2 %}{% include "partials/delayed-fade-in.njk" %}>
-        <div class='my-5'>I'm a solutions architect, project manager, web developer and customer service professional. Yup, all of 'em!</div>
+        <div class='my-5'>I'm a solution architect, project manager, web developer and customer service professional. Yup, all of 'em!</div>
         <div class='my-5'>I'm passionate about supporting people and businesses by designing and building creative, human-centric solutions to technical problems.</div>
         <div class='my-5'>I believe in using my skillset to make people's lives better, whether it be building something to help them succeed or sharing my skills in a mentoring capacity.</div>
     </div>
@@ -60,22 +67,22 @@ projects:
                 <i class="far fa-code text-regularBlue"></i>
             </div>
         </h3>
-        <div class='flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-20 my-10 w-full'>
+        <div class='flex flex-col flex-wrap lg:flex-row justify-center items-center gap-10 lg:gap-20 my-10 w-full'>
             {% set descHeight = 44 %}
             {% set imgSize = 72 %}
             {% for project in projects %}
                 <div class='mb-10 lg:mb-0 w-{{imgSize}}' {% set delayCounter = delayCounter + 1 %}{% include "partials/delayed-fade-in.njk" %}>
-                    <div class='text-xl text-center mb-1 lg:mb-4 font-extrabold'>
-                        <a href="{{project.url}}" target="_blank">{{ project.title }}</a>
-                        {% if project.wip %}
-                            <span class="m-auto rounded bg-light text-greyBlue px-2 py-1 font-heading">WIP</span>
-                        {% endif %}
-                    </div>
                     <div x-data="{ hovering: false, swiped: false, onMobile: window.innerWidth <= 640 }" class='text-darkBlue'
                         @pointerover="onMobile === false ? hovering = true : null" @pointerout="onMobile === false ? hovering = false : null"
                         {# Decided against swipe events on mobile, but leaving the code here in case I change my mind again #}
                         {# @swiped-left="onMobile === true ? swiped = true : null" @swiped-right="onMobile === true ? swiped = false : null" #}
                     >
+                        <div class='text-xl text-center mb-1 lg:mb-4 font-extrabold'>
+                            <a href="{{project.url}}" target="_blank">{{ project.title }}</a>
+                            {% if project.wip %}
+                                <span class="m-auto rounded bg-light text-greyBlue px-2 py-1 font-heading">WIP</span>
+                            {% endif %}
+                        </div>
                         <div class='lg:absolute lg:w-{{imgSize}} h-{{descHeight}} leading-1 px-2 flex flex-col gap-2 items-center justify-center'>
                             <div class="text-center italic">{{ project.desc }}</div>
                             <div class=''>
